@@ -1,0 +1,6 @@
+# This working tree is the live WoW AddOns folder, so git must never rewrite
+# file contents on checkout. Store and restore bytes exactly as they are.
+* -text
+
+*.tga binary
+*.png binary

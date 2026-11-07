@@ -1,0 +1,9 @@
+package-as: TaskTracker
+
+ignore:
+  - .dev
+  - .cursor
+  - .vscode
+  - .gitignore
+  - .gitattributes
+  - .pkgmeta

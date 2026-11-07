@@ -1,0 +1,59 @@
+## Interface: 120105
+## Title: Task Tracker
+## Notes: A personal task and goal tracker
+## Author: Trelander
+## Version: 12.1.5.4
+## SavedVariables: TaskTrackerDB
+## OptionalDeps: LibStub, LibDataBroker-1.1, LibDBIcon-1.0, AllTheThings
+
+Data\Defaults.lua
+Data\ProfessionsCatalog.lua
+Data\Registry.lua
+Data\PowerSeason.lua
+Data\CollectablesCatalog.lua
+Data\ReadyToBuyGates.lua
+Data\WorldQuestMaps.lua
+Data\WhatsNew.lua
+Core\Power.lua
+Core\ResetSchedule.lua
+Core\CharProgress.lua
+Core\Professions.lua
+Core\DB.lua
+Core\PatchListView.lua
+Core\Share.lua
+Core\LiveShare.lua
+Core\Profiles.lua
+Core\Broker.lua
+Core\AdvancedTasks.lua
+Core\FishingAttempts.lua
+Core\LinkInsert.lua
+Core\Engine.lua
+Core\ReadyToBuy.lua
+Core\WorldQuestHunt.lua
+Core\Widgets.lua
+Core\Vault.lua
+Core\MPlusGuides.lua
+UI\Themes\Dark.lua
+UI\Themes\Parchment.lua
+UI\Themes\Nord.lua
+UI\Themes\Bronzed.lua
+UI\Themes\Gilded.lua
+UI\Themes\Ivory.lua
+UI\Themes\Void.lua
+UI\Themes\Verdant.lua
+UI\Themes\Tome.lua
+UI\Themes\Paper.lua
+UI\Theme.lua
+UI\ThemeEditor.lua
+UI\QuickCommands.lua
+UI\Help.lua
+UI\Share.lua
+UI\LiveShare.lua
+UI\Dialogs.lua
+UI\ChangelogWindow.lua
+UI\Shortcuts.lua
+UI\Options.lua
+UI\DebugPanel.lua
+UI\List.lua
+UI\MainPanel.lua
+Core\TaskTracker.lua
