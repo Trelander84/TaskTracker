@@ -5,6 +5,7 @@
 ## Version: 12.1.5.4
 ## SavedVariables: TaskTrackerDB
 ## OptionalDeps: LibStub, LibDataBroker-1.1, LibDBIcon-1.0, AllTheThings
+## X-Curse-Project-ID: 1532144
 
 Data\Defaults.lua
 Data\ProfessionsCatalog.lua

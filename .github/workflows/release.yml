@@ -1,0 +1,31 @@
+name: Package and release
+
+on:
+  push:
+    tags:
+      - '**'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      CF_API_KEY: ${{ secrets.CF_API_KEY }}
+      GITHUB_OAUTH: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # CurseForge gets only this version's section of CHANGELOG.md.
+      - name: Release notes for this tag
+        run: |
+          awk -v v="## ${GITHUB_REF_NAME}" '
+            $0 == v { on = 1; next }
+            on && /^## / { exit }
+            on { print }
+          ' CHANGELOG.md > .release-notes.md
+          if [ ! -s .release-notes.md ]; then cp CHANGELOG.md .release-notes.md; fi
+
+      - uses: BigWigsMods/packager@v2
