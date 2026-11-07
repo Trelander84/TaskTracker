@@ -2,7 +2,7 @@
 ## Title: Task Tracker
 ## Notes: A personal task and goal tracker
 ## Author: Trelander
-## Version: 12.1.5.4
+## Version: 12.1.5.5
 ## SavedVariables: TaskTrackerDB
 ## OptionalDeps: LibStub, LibDataBroker-1.1, LibDBIcon-1.0, AllTheThings
 ## X-Curse-Project-ID: 1532144

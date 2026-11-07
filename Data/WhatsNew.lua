@@ -7,6 +7,15 @@ TaskTracker = TaskTracker or {}
 
 TaskTracker.WHATS_NEW = {
     {
+        version = "12.1.5.5",
+        text = [[New features
+
+Adjusted features
+
+Bug fixes
+]],
+    },
+    {
         version = "12.1.5.4",
         text = [[New features
 Sync
@@ -151,50 +160,6 @@ Reputations
 
 Compatibility
 • After the 12.1.5 update, the list was throwing an error every few seconds. GetItemCount was removed. Item counts now use C_Item.GetItemCount, so that spam stops.
-]],
-    },
-    {
-        version = "12.1.0.11",
-        text = [[New features
-Edit mode
-• Options → General → List has List organization. Pick and place works as it does now. Drag and drop lets you drag = to a gap between rows. The row you are moving fades, and a copy of it follows the cursor.
-• Official sections, such as Midnight, don't take new tasks. Add the task under a group you made.
-
-Delves
-• The Delves header has Delve-O-Bot 7001's icon. Click it to call a ride to a random Bountiful Delve. That needs the toy, and it only works out of combat.
-
-Dungeons and raids
-• Mythic+ in Seasonal Activities is now Dungeons. Normal and Heroic sit above the Mythic+ hints.
-• Normal dungeons need level 80 and drop item level 253. Heroic needs level 90 and drops 276. After that gear is no longer an upgrade, Power keeps Adventurer Mistcrest until 282.
-• Raids lists Normal, Heroic, and Mythic for the Venomous Abyss. Each row counts bosses killed this week on that difficulty, and finishes when the raid is clear. The rows show 292-302, 305-315, and 318-344. They need level 90. The 344 pieces are the last two Mythic bosses. After the gear, Normal keeps Champion Mistcrest until 309 and Heroic keeps Hero Mistcrest until 322. Myth Mistcrest stops at 334, and Mythic gear goes to 344.
-• Each raid difficulty also has a Great Vault row. It counts vault slots for bosses killed on that difficulty, and finishes when the vault is full. That takes 6 bosses. Normal is 305, Heroic is 318, and Mythic is 334-344. The 344 choice is the last two Mythic bosses. Those rows use the same crests.
-• Dungeon and raid rows show a Normal, Heroic, or Mythic icon.
-• Vault Status sits above Delves.
-
-Adjusted features
-Tooltips
-• Notes, commands, edit, Toggle off, Move row, Add task, Add group, and the title bar icons open beside the list, in the same spot as a task tooltip.
-• Add task and Add group name the section. That header lights up while the line is under your cursor, and while you drag a row onto a gap.
-• Toggle off, on an official section, turns off every row in that section.
-
-World Quests
-• Each hunt groups its quests by zone, so you can see where to go.
-
-Power
-• Power suggestions need level 90. Below 90 they drop off the Power list, and stay on in Midnight and the other sections.
-• When no Power row applies, the Power section hides.
-• Power details has a Level column for the level that reward needs.
-
-Bug fixes
-Power details
-• The reward that applies is marked with a check. The old mark drew as a green box.
-
-Power
-• Enable all and Disable all under Power turn that section's switches on or off.
-
-Weekly quests on alts
-• Rows like Lost Legends track each character on their own. Finishing the quest on an alt marks that character Done.
-• An alt who already finished this week before this update stays Incomplete until the next reset. After that, each character keeps their own starting list.
 ]],
     },
 }
