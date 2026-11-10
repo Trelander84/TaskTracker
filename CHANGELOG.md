@@ -4,9 +4,8 @@
 
 ### New features
 
-### Adjusted features
-
-### Bug fixes
+**Empty groups**
+You can show a group you made when it has nothing in it. That includes one whose only contents are other empty groups. Empty groups sits under Options, General, List. It defaults to off, so that group stays off the list. Completed shows it when Show completed is on. Always shows it either way. Edit mode still shows it, so you can add a task or another group.
 
 ## 12.1.5.4
 

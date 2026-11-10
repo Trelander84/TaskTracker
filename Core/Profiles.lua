@@ -15,6 +15,7 @@ local FRESH_PROFILE_LABEL = "New install"
 -- computer (window, minimap, debug) or on the character (progress, wallet).
 local PROFILE_SETTING_KEYS = {
     "hideCompleted",
+    "showEmptyGroups",
     "showRowTooltips",
     "showHelpTooltips",
     "showShortcutHints",
@@ -366,6 +367,7 @@ end
 local function defaultSettings()
     return {
         hideCompleted = false,
+        showEmptyGroups = "off",
         showRowTooltips = true,
         showHelpTooltips = true,
         showShortcutHints = true,

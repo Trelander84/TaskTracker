@@ -414,6 +414,14 @@ local function BuildDisplayPanel(parent)
     local valOrganize = TaskTracker.MakeQuietValue(pane, "List organization")
     valOrganize:SetWellWidth(148)
 
+    local segEmpty = TaskTracker.MakeQuietSegments(pane, {
+        { key = "off", label = "Off" },
+        { key = "completed", label = "Completed" },
+        { key = "always", label = "Always" },
+    })
+    local emptyHost = labeledBar("Empty groups", segEmpty, "Empty groups",
+        "A group you made with nothing in it. That includes one whose only contents are other empty groups. It defaults to off. Edit mode still shows it, so you can add a task or another group.")
+
     local segNote = TaskTracker.MakeQuietSegments(pane, {
         { key = "left", label = "Left" },
         { key = "right", label = "Right" },
@@ -619,6 +627,33 @@ local function BuildDisplayPanel(parent)
         UpdateShiftClicksBtn()
     end)
 
+    local function emptyGroupsMode()
+        local mode = TaskTrackerDB and TaskTrackerDB.showEmptyGroups
+        if mode == "completed" or mode == "always" then return mode end
+        return "off"
+    end
+
+    local function UpdateEmptyGroupsBtn()
+        segEmpty:SetActive(emptyGroupsMode())
+    end
+
+    local function setEmptyGroupsMode(mode)
+        if not TaskTrackerDB then return end
+        TaskTrackerDB.showEmptyGroups = mode
+        UpdateEmptyGroupsBtn()
+        RefreshListLayout()
+    end
+
+    segEmpty.buttons.off:SetScript("OnClick", function()
+        setEmptyGroupsMode("off")
+    end)
+    segEmpty.buttons.completed:SetScript("OnClick", function()
+        setEmptyGroupsMode("completed")
+    end)
+    segEmpty.buttons.always:SetScript("OnClick", function()
+        setEmptyGroupsMode("always")
+    end)
+
     local function UpdateOrganizeBtn()
         local drag = TaskTrackerDB and TaskTrackerDB.editReorderMode == "drag"
         valOrganize:SetValue(drag and "Drag and drop" or "Pick and place")
@@ -756,6 +791,12 @@ local function BuildDisplayPanel(parent)
         "Shift means you hold Shift to change a count or check a box. Normal lets a plain click do it. Shift avoids changing a row by accident. Click to switch.")
     attachButtonTip(valOrganize, "List organization",
         "Pick and place: in Edit mode, click a row, then click the gap where it should go. Drag and drop: hold the row and move it. Click to switch.")
+    attachButtonTip(segEmpty.buttons.off, "Off",
+        "Leaves that group off the list.")
+    attachButtonTip(segEmpty.buttons.completed, "Completed",
+        "Shows that group when Show completed is on. Turn Show completed off and it hides.")
+    attachButtonTip(segEmpty.buttons.always, "Always",
+        "Shows that group whether Show completed is on or off.")
     attachButtonTip(togSubtextTip, "Second line in tooltip",
         "On moves the second line into the task tooltip and takes it off the row. Off leaves that line on the row.")
     attachButtonTip(valNoteIcon, "List note icon",
@@ -1043,6 +1084,8 @@ local function BuildDisplayPanel(parent)
         placeBox(valOrganize, PAD, y, inner)
         valOrganize:SetWellWidth(148)
         y = y + ROW + GAP
+        placeBox(emptyHost, PAD, y, inner)
+        y = y + ROW + GAP
         placeBox(togSubtextTip, PAD, y, inner)
         y = y + ROW + GAP
         placeBox(valNoteIcon, PAD, y, inner)
@@ -1132,6 +1175,7 @@ local function BuildDisplayPanel(parent)
     UpdateSubtextTipBtn()
     UpdateShiftClicksBtn()
     UpdateOrganizeBtn()
+    UpdateEmptyGroupsBtn()
     SyncNoteSideButtons()
     UpdateNoteIconBtn()
     SyncZoneFilterButtons()
@@ -1154,6 +1198,7 @@ local function BuildDisplayPanel(parent)
         UpdateSubtextTipBtn()
         UpdateShiftClicksBtn()
         UpdateOrganizeBtn()
+        UpdateEmptyGroupsBtn()
         RefreshKeybindDisplayBtn()
         UpdateNoteIconBtn()
         UpdateAttBtn()

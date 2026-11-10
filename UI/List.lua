@@ -1614,16 +1614,29 @@ end
 -- Pure registry module groups: omit the header when every leaf is off in Modules,
 -- unlisted (Collected), or a hidden collection farm.
 -- Power also hides when level or ilvl leaves no row to show.
--- A fully empty section hides on the normal list and stays visible while editing.
+-- Empty groups (Options, List): off hides a group you made, completed shows it
+-- while Show completed is on, always shows it. Edit mode still shows it.
+local function emptyUserGroupStays()
+    if IsEditMode() then return true end
+    local mode = TaskTrackerDB and TaskTrackerDB.showEmptyGroups
+    if mode == "always" then return true end
+    if mode == "completed" then
+        return not (TaskTrackerDB and TaskTrackerDB.hideCompleted)
+    end
+    return false
+end
+
+-- A fully empty section hides on the normal list unless Empty groups says to show it.
+-- It stays visible while editing.
 local function ModuleGroupFullyDisabled(node)
     if not node or node.type ~= "group" then
         return false
     end
     if not subtreeHasTaskOrRegistry(node) then
         -- A built-in section with nothing in it stays hidden. A group you made
-        -- stays on the list while editing so you can add to it.
+        -- follows Empty groups, and stays on the list while editing.
         if node.moduleGroupKey then return true end
-        return not IsEditMode()
+        return not emptyUserGroupStays()
     end
     local powerMode = node.moduleGroupKey == "power"
     if not node.children or #node.children == 0 then

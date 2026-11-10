@@ -3866,6 +3866,9 @@ function TaskTracker.InitDB()
 
     -- Global settings
     if db.hideCompleted  == nil then db.hideCompleted  = false end
+    if db.showEmptyGroups ~= "off" and db.showEmptyGroups ~= "completed" and db.showEmptyGroups ~= "always" then
+        db.showEmptyGroups = "off"
+    end
     if db.showRowTooltips == nil then db.showRowTooltips = true end
     if db.showHelpTooltips == nil then db.showHelpTooltips = true end
     if db.showShortcutHints == nil then db.showShortcutHints = true end
